@@ -1,0 +1,724 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7961777D26A2D96A00C4A91A /* ConcurrentBikesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7961777C26A2D96A00C4A91A /* ConcurrentBikesApp.swift */; };
+		7961777F26A2D96A00C4A91A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7961777E26A2D96A00C4A91A /* ContentView.swift */; };
+		7961778126A2D96B00C4A91A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7961778026A2D96B00C4A91A /* Assets.xcassets */; };
+		7961778426A2D96B00C4A91A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7961778326A2D96B00C4A91A /* Preview Assets.xcassets */; };
+		7961779826A2D96B00C4A91A /* ConcurrentBikesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7961779726A2D96B00C4A91A /* ConcurrentBikesUITests.swift */; };
+		796177A726A2DA9D00C4A91A /* Milano.json in Resources */ = {isa = PBXBuildFile; fileRef = 796177A626A2DA9D00C4A91A /* Milano.json */; };
+		796177A926A2DAD900C4A91A /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796177A826A2DAD900C4A91A /* City.swift */; };
+		796177AC26A2DB1D00C4A91A /* CityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796177AB26A2DB1D00C4A91A /* CityTests.swift */; };
+		796177AE26A2DD4100C4A91A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796177AD26A2DD4100C4A91A /* Network.swift */; };
+		796177B126A2DDEF00C4A91A /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796177B026A2DDEE00C4A91A /* Service.swift */; };
+		796177B426A2E2FE00C4A91A /* ServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796177B326A2E2FE00C4A91A /* ServiceTests.swift */; };
+		796177B826A2E70000C4A91A /* InvalidJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 796177B726A2E70000C4A91A /* InvalidJson.json */; };
+		796177BA26A2EB9000C4A91A /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796177B926A2EB9000C4A91A /* ServiceError.swift */; };
+		796177BF26A2EC9500C4A91A /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796177BE26A2EC9500C4A91A /* Station.swift */; };
+		796177C226A2EFDC00C4A91A /* StationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796177C126A2EFDC00C4A91A /* StationTests.swift */; };
+		796177C526A2F91E00C4A91A /* DecodingError+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796177C426A2F91E00C4A91A /* DecodingError+.swift */; };
+		796177C826A2FD6D00C4A91A /* XCTestCase+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796177C726A2FD6D00C4A91A /* XCTestCase+.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7961778A26A2D96B00C4A91A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7961777126A2D96A00C4A91A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7961777826A2D96A00C4A91A;
+			remoteInfo = ConcurrentBikes;
+		};
+		7961779426A2D96B00C4A91A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7961777126A2D96A00C4A91A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7961777826A2D96A00C4A91A;
+			remoteInfo = ConcurrentBikes;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7961777926A2D96A00C4A91A /* ConcurrentBikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConcurrentBikes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7961777C26A2D96A00C4A91A /* ConcurrentBikesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentBikesApp.swift; sourceTree = "<group>"; };
+		7961777E26A2D96A00C4A91A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7961778026A2D96B00C4A91A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7961778326A2D96B00C4A91A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7961778926A2D96B00C4A91A /* ConcurrentBikesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConcurrentBikesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7961779326A2D96B00C4A91A /* ConcurrentBikesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConcurrentBikesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7961779726A2D96B00C4A91A /* ConcurrentBikesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentBikesUITests.swift; sourceTree = "<group>"; };
+		796177A626A2DA9D00C4A91A /* Milano.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Milano.json; sourceTree = "<group>"; };
+		796177A826A2DAD900C4A91A /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		796177AB26A2DB1D00C4A91A /* CityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTests.swift; sourceTree = "<group>"; };
+		796177AD26A2DD4100C4A91A /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		796177B026A2DDEE00C4A91A /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		796177B326A2E2FE00C4A91A /* ServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTests.swift; sourceTree = "<group>"; };
+		796177B726A2E70000C4A91A /* InvalidJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = InvalidJson.json; sourceTree = "<group>"; };
+		796177B926A2EB9000C4A91A /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		796177BE26A2EC9500C4A91A /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		796177C126A2EFDC00C4A91A /* StationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTests.swift; sourceTree = "<group>"; };
+		796177C426A2F91E00C4A91A /* DecodingError+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecodingError+.swift"; sourceTree = "<group>"; };
+		796177C726A2FD6D00C4A91A /* XCTestCase+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7961777626A2D96A00C4A91A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7961778626A2D96B00C4A91A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7961779026A2D96B00C4A91A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7961777026A2D96A00C4A91A = {
+			isa = PBXGroup;
+			children = (
+				7961777B26A2D96A00C4A91A /* ConcurrentBikes */,
+				7961778C26A2D96B00C4A91A /* ConcurrentBikesTests */,
+				7961779626A2D96B00C4A91A /* ConcurrentBikesUITests */,
+				7961777A26A2D96A00C4A91A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7961777A26A2D96A00C4A91A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7961777926A2D96A00C4A91A /* ConcurrentBikes.app */,
+				7961778926A2D96B00C4A91A /* ConcurrentBikesTests.xctest */,
+				7961779326A2D96B00C4A91A /* ConcurrentBikesUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7961777B26A2D96A00C4A91A /* ConcurrentBikes */ = {
+			isa = PBXGroup;
+			children = (
+				796177C326A2F91000C4A91A /* Extensions */,
+				796177C026A2EF6700C4A91A /* App */,
+				796177BB26A2EBD500C4A91A /* Resources */,
+				796177AF26A2DDDD00C4A91A /* Service */,
+				796177A426A2D97C00C4A91A /* Model */,
+			);
+			path = ConcurrentBikes;
+			sourceTree = "<group>";
+		};
+		7961778226A2D96B00C4A91A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				7961778326A2D96B00C4A91A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7961778C26A2D96B00C4A91A /* ConcurrentBikesTests */ = {
+			isa = PBXGroup;
+			children = (
+				796177C626A2FD5E00C4A91A /* Extensions */,
+				796177B226A2E2F000C4A91A /* ServiceTests */,
+				796177AA26A2DB0900C4A91A /* Model */,
+				796177A526A2DA6400C4A91A /* Json */,
+			);
+			path = ConcurrentBikesTests;
+			sourceTree = "<group>";
+		};
+		7961779626A2D96B00C4A91A /* ConcurrentBikesUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7961779726A2D96B00C4A91A /* ConcurrentBikesUITests.swift */,
+			);
+			path = ConcurrentBikesUITests;
+			sourceTree = "<group>";
+		};
+		796177A426A2D97C00C4A91A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				796177A826A2DAD900C4A91A /* City.swift */,
+				796177AD26A2DD4100C4A91A /* Network.swift */,
+				796177BE26A2EC9500C4A91A /* Station.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		796177A526A2DA6400C4A91A /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				796177A626A2DA9D00C4A91A /* Milano.json */,
+				796177B726A2E70000C4A91A /* InvalidJson.json */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
+		796177AA26A2DB0900C4A91A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				796177AB26A2DB1D00C4A91A /* CityTests.swift */,
+				796177C126A2EFDC00C4A91A /* StationTests.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		796177AF26A2DDDD00C4A91A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				796177B026A2DDEE00C4A91A /* Service.swift */,
+				796177B926A2EB9000C4A91A /* ServiceError.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		796177B226A2E2F000C4A91A /* ServiceTests */ = {
+			isa = PBXGroup;
+			children = (
+				796177B326A2E2FE00C4A91A /* ServiceTests.swift */,
+			);
+			path = ServiceTests;
+			sourceTree = "<group>";
+		};
+		796177BB26A2EBD500C4A91A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7961778026A2D96B00C4A91A /* Assets.xcassets */,
+				7961778226A2D96B00C4A91A /* Preview Content */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		796177C026A2EF6700C4A91A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				7961777C26A2D96A00C4A91A /* ConcurrentBikesApp.swift */,
+				7961777E26A2D96A00C4A91A /* ContentView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		796177C326A2F91000C4A91A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				796177C426A2F91E00C4A91A /* DecodingError+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		796177C626A2FD5E00C4A91A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				796177C726A2FD6D00C4A91A /* XCTestCase+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7961777826A2D96A00C4A91A /* ConcurrentBikes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7961779B26A2D96B00C4A91A /* Build configuration list for PBXNativeTarget "ConcurrentBikes" */;
+			buildPhases = (
+				7961777526A2D96A00C4A91A /* Sources */,
+				7961777626A2D96A00C4A91A /* Frameworks */,
+				7961777726A2D96A00C4A91A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ConcurrentBikes;
+			productName = ConcurrentBikes;
+			productReference = 7961777926A2D96A00C4A91A /* ConcurrentBikes.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7961778826A2D96B00C4A91A /* ConcurrentBikesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7961779E26A2D96B00C4A91A /* Build configuration list for PBXNativeTarget "ConcurrentBikesTests" */;
+			buildPhases = (
+				7961778526A2D96B00C4A91A /* Sources */,
+				7961778626A2D96B00C4A91A /* Frameworks */,
+				7961778726A2D96B00C4A91A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7961778B26A2D96B00C4A91A /* PBXTargetDependency */,
+			);
+			name = ConcurrentBikesTests;
+			productName = ConcurrentBikesTests;
+			productReference = 7961778926A2D96B00C4A91A /* ConcurrentBikesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7961779226A2D96B00C4A91A /* ConcurrentBikesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 796177A126A2D96B00C4A91A /* Build configuration list for PBXNativeTarget "ConcurrentBikesUITests" */;
+			buildPhases = (
+				7961778F26A2D96B00C4A91A /* Sources */,
+				7961779026A2D96B00C4A91A /* Frameworks */,
+				7961779126A2D96B00C4A91A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7961779526A2D96B00C4A91A /* PBXTargetDependency */,
+			);
+			name = ConcurrentBikesUITests;
+			productName = ConcurrentBikesUITests;
+			productReference = 7961779326A2D96B00C4A91A /* ConcurrentBikesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7961777126A2D96A00C4A91A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					7961777826A2D96A00C4A91A = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					7961778826A2D96B00C4A91A = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 7961777826A2D96A00C4A91A;
+					};
+					7961779226A2D96B00C4A91A = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 7961777826A2D96A00C4A91A;
+					};
+				};
+			};
+			buildConfigurationList = 7961777426A2D96A00C4A91A /* Build configuration list for PBXProject "ConcurrentBikes" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7961777026A2D96A00C4A91A;
+			productRefGroup = 7961777A26A2D96A00C4A91A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7961777826A2D96A00C4A91A /* ConcurrentBikes */,
+				7961778826A2D96B00C4A91A /* ConcurrentBikesTests */,
+				7961779226A2D96B00C4A91A /* ConcurrentBikesUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7961777726A2D96A00C4A91A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7961778426A2D96B00C4A91A /* Preview Assets.xcassets in Resources */,
+				7961778126A2D96B00C4A91A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7961778726A2D96B00C4A91A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				796177A726A2DA9D00C4A91A /* Milano.json in Resources */,
+				796177B826A2E70000C4A91A /* InvalidJson.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7961779126A2D96B00C4A91A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7961777526A2D96A00C4A91A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				796177BA26A2EB9000C4A91A /* ServiceError.swift in Sources */,
+				796177C526A2F91E00C4A91A /* DecodingError+.swift in Sources */,
+				7961777F26A2D96A00C4A91A /* ContentView.swift in Sources */,
+				7961777D26A2D96A00C4A91A /* ConcurrentBikesApp.swift in Sources */,
+				796177B126A2DDEF00C4A91A /* Service.swift in Sources */,
+				796177AE26A2DD4100C4A91A /* Network.swift in Sources */,
+				796177A926A2DAD900C4A91A /* City.swift in Sources */,
+				796177BF26A2EC9500C4A91A /* Station.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7961778526A2D96B00C4A91A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				796177AC26A2DB1D00C4A91A /* CityTests.swift in Sources */,
+				796177C226A2EFDC00C4A91A /* StationTests.swift in Sources */,
+				796177C826A2FD6D00C4A91A /* XCTestCase+.swift in Sources */,
+				796177B426A2E2FE00C4A91A /* ServiceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7961778F26A2D96B00C4A91A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7961779826A2D96B00C4A91A /* ConcurrentBikesUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7961778B26A2D96B00C4A91A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7961777826A2D96A00C4A91A /* ConcurrentBikes */;
+			targetProxy = 7961778A26A2D96B00C4A91A /* PBXContainerItemProxy */;
+		};
+		7961779526A2D96B00C4A91A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7961777826A2D96A00C4A91A /* ConcurrentBikes */;
+			targetProxy = 7961779426A2D96B00C4A91A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		7961779926A2D96B00C4A91A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7961779A26A2D96B00C4A91A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7961779C26A2D96B00C4A91A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ConcurrentBikes/Resources/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.serg-ios.ConcurrentBikes";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7961779D26A2D96B00C4A91A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ConcurrentBikes/Resources/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.serg-ios.ConcurrentBikes";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7961779F26A2D96B00C4A91A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.serg-ios.ConcurrentBikesTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConcurrentBikes.app/ConcurrentBikes";
+			};
+			name = Debug;
+		};
+		796177A026A2D96B00C4A91A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.serg-ios.ConcurrentBikesTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConcurrentBikes.app/ConcurrentBikes";
+			};
+			name = Release;
+		};
+		796177A226A2D96B00C4A91A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.serg-ios.ConcurrentBikesUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ConcurrentBikes;
+			};
+			name = Debug;
+		};
+		796177A326A2D96B00C4A91A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.serg-ios.ConcurrentBikesUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ConcurrentBikes;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7961777426A2D96A00C4A91A /* Build configuration list for PBXProject "ConcurrentBikes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7961779926A2D96B00C4A91A /* Debug */,
+				7961779A26A2D96B00C4A91A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7961779B26A2D96B00C4A91A /* Build configuration list for PBXNativeTarget "ConcurrentBikes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7961779C26A2D96B00C4A91A /* Debug */,
+				7961779D26A2D96B00C4A91A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7961779E26A2D96B00C4A91A /* Build configuration list for PBXNativeTarget "ConcurrentBikesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7961779F26A2D96B00C4A91A /* Debug */,
+				796177A026A2D96B00C4A91A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		796177A126A2D96B00C4A91A /* Build configuration list for PBXNativeTarget "ConcurrentBikesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				796177A226A2D96B00C4A91A /* Debug */,
+				796177A326A2D96B00C4A91A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7961777126A2D96A00C4A91A /* Project object */;
+}
