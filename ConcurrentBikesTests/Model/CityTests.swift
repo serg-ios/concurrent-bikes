@@ -13,9 +13,9 @@ class CityTests: XCTestCase {
     
     private let bundle = Bundle(for: CityTests.self)
     
-    func testDecodable() {
+    func testDecodable() async {
         do {
-            let city = try Service<City>.json(fileName: "Milano", bundle: bundle).get()
+            let city = try await Service<City>.json(fileName: "Milano", bundle: bundle).get()
             XCTAssertEqual(city?.id, "bikemi")
         } catch {
             handleError(error)

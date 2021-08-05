@@ -11,7 +11,6 @@
 		7961777F26A2D96A00C4A91A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7961777E26A2D96A00C4A91A /* ContentView.swift */; };
 		7961778126A2D96B00C4A91A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7961778026A2D96B00C4A91A /* Assets.xcassets */; };
 		7961778426A2D96B00C4A91A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7961778326A2D96B00C4A91A /* Preview Assets.xcassets */; };
-		7961779826A2D96B00C4A91A /* ConcurrentBikesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7961779726A2D96B00C4A91A /* ConcurrentBikesUITests.swift */; };
 		796177A726A2DA9D00C4A91A /* Milano.json in Resources */ = {isa = PBXBuildFile; fileRef = 796177A626A2DA9D00C4A91A /* Milano.json */; };
 		796177A926A2DAD900C4A91A /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796177A826A2DAD900C4A91A /* City.swift */; };
 		796177AC26A2DB1D00C4A91A /* CityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796177AB26A2DB1D00C4A91A /* CityTests.swift */; };
@@ -34,13 +33,6 @@
 			remoteGlobalIDString = 7961777826A2D96A00C4A91A;
 			remoteInfo = ConcurrentBikes;
 		};
-		7961779426A2D96B00C4A91A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7961777126A2D96A00C4A91A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7961777826A2D96A00C4A91A;
-			remoteInfo = ConcurrentBikes;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -50,8 +42,6 @@
 		7961778026A2D96B00C4A91A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7961778326A2D96B00C4A91A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7961778926A2D96B00C4A91A /* ConcurrentBikesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConcurrentBikesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7961779326A2D96B00C4A91A /* ConcurrentBikesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConcurrentBikesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7961779726A2D96B00C4A91A /* ConcurrentBikesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentBikesUITests.swift; sourceTree = "<group>"; };
 		796177A626A2DA9D00C4A91A /* Milano.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Milano.json; sourceTree = "<group>"; };
 		796177A826A2DAD900C4A91A /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		796177AB26A2DB1D00C4A91A /* CityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTests.swift; sourceTree = "<group>"; };
@@ -81,13 +71,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7961779026A2D96B00C4A91A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -96,7 +79,6 @@
 			children = (
 				7961777B26A2D96A00C4A91A /* ConcurrentBikes */,
 				7961778C26A2D96B00C4A91A /* ConcurrentBikesTests */,
-				7961779626A2D96B00C4A91A /* ConcurrentBikesUITests */,
 				7961777A26A2D96A00C4A91A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -106,7 +88,6 @@
 			children = (
 				7961777926A2D96A00C4A91A /* ConcurrentBikes.app */,
 				7961778926A2D96B00C4A91A /* ConcurrentBikesTests.xctest */,
-				7961779326A2D96B00C4A91A /* ConcurrentBikesUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,14 +121,6 @@
 				796177A526A2DA6400C4A91A /* Json */,
 			);
 			path = ConcurrentBikesTests;
-			sourceTree = "<group>";
-		};
-		7961779626A2D96B00C4A91A /* ConcurrentBikesUITests */ = {
-			isa = PBXGroup;
-			children = (
-				7961779726A2D96B00C4A91A /* ConcurrentBikesUITests.swift */,
-			);
-			path = ConcurrentBikesUITests;
 			sourceTree = "<group>";
 		};
 		796177A426A2D97C00C4A91A /* Model */ = {
@@ -267,24 +240,6 @@
 			productReference = 7961778926A2D96B00C4A91A /* ConcurrentBikesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7961779226A2D96B00C4A91A /* ConcurrentBikesUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 796177A126A2D96B00C4A91A /* Build configuration list for PBXNativeTarget "ConcurrentBikesUITests" */;
-			buildPhases = (
-				7961778F26A2D96B00C4A91A /* Sources */,
-				7961779026A2D96B00C4A91A /* Frameworks */,
-				7961779126A2D96B00C4A91A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7961779526A2D96B00C4A91A /* PBXTargetDependency */,
-			);
-			name = ConcurrentBikesUITests;
-			productName = ConcurrentBikesUITests;
-			productReference = 7961779326A2D96B00C4A91A /* ConcurrentBikesUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -299,10 +254,6 @@
 						CreatedOnToolsVersion = 13.0;
 					};
 					7961778826A2D96B00C4A91A = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = 7961777826A2D96A00C4A91A;
-					};
-					7961779226A2D96B00C4A91A = {
 						CreatedOnToolsVersion = 13.0;
 						TestTargetID = 7961777826A2D96A00C4A91A;
 					};
@@ -323,7 +274,6 @@
 			targets = (
 				7961777826A2D96A00C4A91A /* ConcurrentBikes */,
 				7961778826A2D96B00C4A91A /* ConcurrentBikesTests */,
-				7961779226A2D96B00C4A91A /* ConcurrentBikesUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -344,13 +294,6 @@
 			files = (
 				796177A726A2DA9D00C4A91A /* Milano.json in Resources */,
 				796177B826A2E70000C4A91A /* InvalidJson.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7961779126A2D96B00C4A91A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,14 +326,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7961778F26A2D96B00C4A91A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7961779826A2D96B00C4A91A /* ConcurrentBikesUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -398,11 +333,6 @@
 			isa = PBXTargetDependency;
 			target = 7961777826A2D96A00C4A91A /* ConcurrentBikes */;
 			targetProxy = 7961778A26A2D96B00C4A91A /* PBXContainerItemProxy */;
-		};
-		7961779526A2D96B00C4A91A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7961777826A2D96A00C4A91A /* ConcurrentBikes */;
-			targetProxy = 7961779426A2D96B00C4A91A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -539,7 +469,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -569,7 +499,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -592,7 +522,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -617,7 +547,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -630,52 +560,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConcurrentBikes.app/ConcurrentBikes";
-			};
-			name = Release;
-		};
-		796177A226A2D96B00C4A91A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.serg-ios.ConcurrentBikesUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ConcurrentBikes;
-			};
-			name = Debug;
-		};
-		796177A326A2D96B00C4A91A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.serg-ios.ConcurrentBikesUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ConcurrentBikes;
 			};
 			name = Release;
 		};
@@ -705,15 +589,6 @@
 			buildConfigurations = (
 				7961779F26A2D96B00C4A91A /* Debug */,
 				796177A026A2D96B00C4A91A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		796177A126A2D96B00C4A91A /* Build configuration list for PBXNativeTarget "ConcurrentBikesUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				796177A226A2D96B00C4A91A /* Debug */,
-				796177A326A2D96B00C4A91A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

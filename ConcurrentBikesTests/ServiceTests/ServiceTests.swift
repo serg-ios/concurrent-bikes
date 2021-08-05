@@ -13,22 +13,50 @@ class ServiceTests: XCTestCase {
     
     private let bundle = Bundle(for: ServiceTests.self)
     
-    func testMissingFileErrorThrown() {
-        XCTAssertThrowsError(
-            try Service<City>.json(fileName: "Madrid", bundle: bundle).get(),
-            "Madrid.json not found, as expected, error is thrown."
-        ) { error in
+    // MARK: - URLSession
+    
+    func testGetSuccess() async {
+        guard let url = URL(string: "https://api.citybik.es/v2/networks/bikemi") else {
+            XCTFail("Invalid URL.")
+            return
+        }
+        do {
+            let city = try await Service<City>.get(from: url).get()
+            XCTAssertEqual("bikemi", city?.network.id)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
+    func testGetDecodingErrorThrown() async {
+        guard let url = URL(string: "https://api.citybik.es/v2/networks/bikemi") else {
+            XCTFail("Invalid URL.")
+            return
+        }
+        do {
+            let network = try await Service<Network>.get(from: url).get()
+            XCTAssertEqual("bikemi", network?.id)
+        } catch {
+            XCTAssertNotNil(error as? DecodingError)
+        }
+    }
+    
+    // MARK: - Error
+    
+    func testMissingFileErrorThrown() async {
+        do {
+            async let _ = try await Service<City>.json(fileName: "Madrid", bundle: bundle).get()
+        } catch {
             let expectedError = ServiceError.missingFile("Madrid.json")
             XCTAssertEqual(error as? ServiceError, expectedError)
         }
     }
     
-    func testDecodingErrorThrown() {
+    func testDecodingErrorThrown() async {
         let fileName = "InvalidJson"
-        XCTAssertThrowsError(
-            try Service<City>.json(fileName: fileName, bundle: bundle).get(),
-            "\(fileName).json can't be decoded, as expected, error is thrown."
-        ) { error in
+        do {
+            async let _ = try await Service<City>.json(fileName: fileName, bundle: bundle).get()
+        } catch {
             XCTAssertNotNil(error as? DecodingError)
         }
     }

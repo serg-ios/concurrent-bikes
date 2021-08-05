@@ -8,7 +8,7 @@
 import Foundation
 
 struct Service<T: Decodable> {
-    let get: () -> T?
+    let get: () async -> T?
 }
 
 extension Service {
@@ -24,5 +24,11 @@ extension Service {
             let decoded = try JSONDecoder().decode(T.self, from: data)
             return .init(get: { decoded })
         }
+    }
+    
+    static func get(from url: URL) async throws -> Self {
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let decoded = try JSONDecoder().decode(T.self, from: data)
+        return .init(get: { decoded })
     }
 }
