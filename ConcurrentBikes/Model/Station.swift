@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-struct Station: Decodable, Identifiable {
+actor Station: Decodable, Identifiable {
     let id: String
     let name: String
     let latitude: CLLocationDegrees
@@ -20,5 +20,15 @@ struct Station: Decodable, Identifiable {
         case id, name, latitude, longitude
         case freeBikes = "free_bikes"
         case emptySlots = "empty_slots"
+    }
+    
+    func addBike() {
+        freeBikes += 1
+        emptySlots -= 1
+    }
+    
+    func removeBike() {
+        freeBikes -= 1
+        emptySlots += 1
     }
 }

@@ -24,7 +24,7 @@ class ServiceTests: XCTestCase {
             let city = try await Service<City>.get(from: url).get()
             XCTAssertEqual("bikemi", city?.network.id)
         } catch {
-            XCTFail(error.localizedDescription)
+            handleError(error)
         }
     }
     
