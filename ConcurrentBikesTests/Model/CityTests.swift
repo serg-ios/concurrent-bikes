@@ -25,28 +25,32 @@ class CityTests: XCTestCase {
     func testSimulation() async {
         do {
             let city = try await Service<City>.json(fileName: "Milano", bundle: bundle).get()
+            // Get only the first 4 stations, otherwise there will be no waiting.
             let firstFourStations = city?.network.stations[0...3] ?? []
+            let numberOfBikeUsers = 50
             var freeBikesInFirstFourStations = 0
             for station in firstFourStations {
                 freeBikesInFirstFourStations += await station.freeBikes
             }
-            XCTAssertEqual(37, freeBikesInFirstFourStations)
-            var totalTimeToWait: TimeInterval = 0
+            // The number of bike users must be greater than the number of bikes, for ensure waiting.
+            XCTAssertGreaterThan(numberOfBikeUsers, freeBikesInFirstFourStations)
+            var totalWaitedTime: TimeInterval = 0
             await withTaskGroup(of: TimeInterval.self) { group in
                 var bikeUsers: [BikeUser] = []
-                for id in 0..<50 {
+                for id in 0..<numberOfBikeUsers {
                     bikeUsers.append(BikeUser(id: id))
                 }
                 for bikeUser in bikeUsers {
-                    group.async {
+                    group.addTask {
                         return await bikeUser.runSimulation(in: Array(firstFourStations), paths: 100)
                     }
                 }
                 for await timeToWait in group {
-                    totalTimeToWait += timeToWait
+                    totalWaitedTime += timeToWait
                 }
             }
-            XCTAssertGreaterThan(0, totalTimeToWait)
+            // If the number of userrs is greater than the number of bikes, there must be some waiting.
+            XCTAssertGreaterThan(totalWaitedTime, 0)
         } catch {
             handleError(error)
         }

@@ -10,11 +10,12 @@ import CoreLocation
 
 actor Station: Decodable, Identifiable {
     let id: String
-    let name: String
-    let latitude: CLLocationDegrees
-    let longitude: CLLocationDegrees
+    var name: String
+    var latitude: CLLocationDegrees
+    var longitude: CLLocationDegrees
     var freeBikes: Int
     var emptySlots: Int
+    var identifier: String { id }
     
     enum CodingKeys: String, CodingKey {
         case id, name, latitude, longitude
