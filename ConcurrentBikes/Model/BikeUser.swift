@@ -10,6 +10,11 @@ import Foundation
 /// Represents the city bikes' user that moves from one station to another randomly, by bike or walking when there are no bikes available.
 class BikeUser: Identifiable {
     
+    struct SimulationResult {
+        let time: TimeInterval
+        let paths: Int
+    }
+    
     // MARK: - Identifiable
     
     /// Identifies univocally a user.
@@ -19,7 +24,7 @@ class BikeUser: Identifiable {
     
     /// The waiting time in nanoseconds for moving to the next station when there are not available bikes to take
     /// or when there are no empty slots to leave the current bike.
-    private let waitingTime: UInt64 = 500_000_000
+    private let waitingTime: UInt64 = 100_000_000
     
     /// If `true`, the user is currently riding a bike.
     private var hasBike: Bool = false
@@ -34,15 +39,23 @@ class BikeUser: Identifiable {
     // MARK: - Logic
     
     /// Runs the simulation of the user moving through the area by bike, waiting to leave or take a bike when necessary.
+    ///
+    /// The task can be cancelled if the user reaches the goal before going through all the paths.
     /// - Parameters:
     ///   - stations: The array of stations that compounds the area covered by the simulation.
     ///   - paths: The number of paths that the user must complete by bike to conclude the simulation.
+    ///   - goal: ID of the station the user wants to reach. If `nil`, the user will run all the paths, otherwise it will run until reaches the goal.
     ///   - logs: If `true`, prints logs indicating the state of the stations in every step.
     /// - Returns: The total time in seconds waited to take or leave a bike.
-    func runSimulation(in stations: [Station], paths: Int, logs: Bool = false) async -> TimeInterval {
+    func runSimulation(
+        in stations: [Station],
+        paths: Int,
+        goal: String? = nil,
+        logs: Bool = false
+    ) async -> SimulationResult {
         var totalWaitingTime: TimeInterval = 0
         var path = 0
-        while true, path < paths {
+        while true, path < paths, !Task.isCancelled {
             let stationIndex = Int.random(in: 0..<stations.count)
             var station = stations[stationIndex]
             if !hasBike, await station.freeBikes > 0 {
@@ -50,11 +63,18 @@ class BikeUser: Identifiable {
             } else if hasBike, await station.emptySlots > 0 {
                 await leaveBike(in: &station, logs: logs)
                 path += 1
+                if await station.identifier == goal {
+                    withUnsafeCurrentTask { maybeUnsafeCurrentTask in
+                        let task: UnsafeCurrentTask = maybeUnsafeCurrentTask! // always ok inside async function.
+                        if logs { print("🚴‍♂️ \(id) 🎉🥳🎊") }
+                        task.cancel()
+                    }
+                }
             } else {
                 await wait(in: station, incrementing: &totalWaitingTime, logs: logs)
             }
         }
-        return totalWaitingTime
+        return .init(time: totalWaitingTime, paths: path)
     }
     
     // MARK: - Private methods
