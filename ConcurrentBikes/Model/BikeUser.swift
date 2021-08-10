@@ -7,57 +7,108 @@
 
 import Foundation
 
+/// Represents the city bikes' user that moves from one station to another randomly, by bike or walking when there are no bikes available.
 class BikeUser: Identifiable {
     
+    // MARK: - Identifiable
+    
+    /// Identifies univocally a user.
     var id: Int
     
-    private let waitingTime = 0.00000002
+    // MARK: - Properties
+    
+    /// The waiting time in nanoseconds for moving to the next station when there are not available bikes to take
+    /// or when there are no empty slots to leave the current bike.
+    private let waitingTime: UInt64 = 500_000_000
+    
+    /// If `true`, the user is currently riding a bike.
     private var hasBike: Bool = false
+    
+    // MARK: - Init
     
     internal init(id: Int, hasBike: Bool = false) {
         self.id = id
         self.hasBike = hasBike
     }
     
+    // MARK: - Logic
+    
     /// Runs the simulation of the user moving through the area by bike, waiting to leave or take a bike when necessary.
     /// - Parameters:
     ///   - stations: The array of stations that compounds the area covered by the simulation.
     ///   - paths: The number of paths that the user must complete by bike to conclude the simulation.
-    /// - Returns: The total time waited to take or leave a bike.
-    func runSimulation(in stations: [Station], paths: Int) async -> TimeInterval {
+    ///   - logs: If `true`, prints logs indicating the state of the stations in every step.
+    /// - Returns: The total time in seconds waited to take or leave a bike.
+    func runSimulation(in stations: [Station], paths: Int, logs: Bool = false) async -> TimeInterval {
         var totalWaitingTime: TimeInterval = 0
-        for _ in 0..<paths {
-            var stationIndex = Int.random(in: 0..<stations.count)
-            var nextStation = stations[stationIndex]
-            mainloop: while true {
-                switch hasBike {
-                case false:
-                    if await nextStation.freeBikes > 0 {
-                        await nextStation.removeBike()
-                        hasBike = true
-                        await Task.sleep(.random(in: 0...20))
-                        break mainloop
-                    } else {
-                        await Task.sleep(.random(in: 0...20))
-                        totalWaitingTime += waitingTime
-                        stationIndex = Int.random(in: 0..<stations.count)
-                        nextStation = stations[stationIndex]
-                    }
-                case true:
-                    if await nextStation.emptySlots > 0 {
-                        await nextStation.addBike()
-                        hasBike = false
-                        await Task.sleep(.random(in: 0...20))
-                        break mainloop
-                    } else {
-                        await Task.sleep(.random(in: 0...20))
-                        totalWaitingTime += waitingTime
-                        stationIndex = Int.random(in: 0..<stations.count)
-                        nextStation = stations[stationIndex]
-                    }
-                }
+        var path = 0
+        while true, path < paths {
+            let stationIndex = Int.random(in: 0..<stations.count)
+            var station = stations[stationIndex]
+            if !hasBike, await station.freeBikes > 0 {
+                await takeBike(from: &station, logs: logs)
+            } else if hasBike, await station.emptySlots > 0 {
+                await leaveBike(in: &station, logs: logs)
+                path += 1
+            } else {
+                await wait(in: station, incrementing: &totalWaitingTime, logs: logs)
             }
         }
         return totalWaitingTime
+    }
+    
+    // MARK: - Private methods
+    
+    /// Waits and increments the total waiting time.
+    /// - Parameters:
+    ///   - station: Needed to print logs.
+    ///   - totalWaitingTime: Reference to the accumulated time.
+    ///   - logs: If `true`, Xcode logs are enabled, `false` by default.
+    private func wait(
+        in station: Station,
+        incrementing totalWaitingTime: inout TimeInterval,
+        logs: Bool = false
+    ) async {
+        if logs {
+            print("\(hasBike ? "🚴‍♂️" : "🚶‍♂️") \(id) ⛔️ \(station.id)")
+        }
+        await Task.sleep(waitingTime)
+        totalWaitingTime += Double(waitingTime) / 1_000_000_000
+    }
+    
+    /// Takes a bike from a station, leaving an empty slot.
+    /// - Parameters:
+    ///   - station: The station from which the bike will be taken.
+    ///   - logs: If `true`, Xcode logs are enabled, `false` by default.
+    private func takeBike(from station: inout Station, logs: Bool = false) async {
+        if logs {
+            print("🚶‍♂️ \(id)", terminator: " ")
+        }
+        await station.removeBike()
+        hasBike = true
+        if logs {
+            let freeBikes = await station.freeBikes
+            let emptySlots = await station.emptySlots
+            print("🚉 \(station.id) 🚲 \(freeBikes) 🅿️ \(emptySlots)")
+        }
+        await Task.sleep(waitingTime)
+    }
+    
+    /// Leaves a bike in a station.
+    /// - Parameters:
+    ///   - station: The station in which the bike will be left.
+    ///   - logs: If `true`, Xcode logs are enabled, `false` by default.
+    private func leaveBike(in station: inout Station, logs: Bool = false) async {
+        if logs {
+            print("🚴‍♂️ \(id)", terminator: " ")
+        }
+        await station.addBike()
+        hasBike = false
+        if logs {
+            let freeBikes = await station.freeBikes
+            let emptySlots = await station.emptySlots
+            print("🚉 \(station.id) 🚲 \(freeBikes) 🅿️ \(emptySlots)")
+        }
+        await Task.sleep(waitingTime)
     }
 }

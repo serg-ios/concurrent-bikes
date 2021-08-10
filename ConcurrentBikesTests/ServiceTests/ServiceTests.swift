@@ -34,8 +34,8 @@ class ServiceTests: XCTestCase {
             return
         }
         do {
-            let network = try await Service<Network>.get(from: url).get()
-            XCTAssertEqual("bikemi", network?.id)
+            let _ = try await Service<Network>.get(from: url).get()
+            XCTFail("Error should be thrown.")
         } catch {
             XCTAssertNotNil(error as? DecodingError)
         }

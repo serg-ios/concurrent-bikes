@@ -37,6 +37,14 @@
                BlueprintName = "ConcurrentBikesTests"
                ReferencedContainer = "container:ConcurrentBikes.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "ServiceTests/testGetDecodingErrorThrown()">
+               </Test>
+               <Test
+                  Identifier = "ServiceTests/testGetSuccess()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">

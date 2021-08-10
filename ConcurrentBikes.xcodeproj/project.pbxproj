@@ -24,6 +24,7 @@
 		796177C526A2F91E00C4A91A /* DecodingError+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796177C426A2F91E00C4A91A /* DecodingError+.swift */; };
 		796177C826A2FD6D00C4A91A /* XCTestCase+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796177C726A2FD6D00C4A91A /* XCTestCase+.swift */; };
 		79BACD0026BDC9CD0021134B /* BikeUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BACCFF26BDC9CD0021134B /* BikeUser.swift */; };
+		79D1936A26C2824E00B94191 /* BikeUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D1936926C2824E00B94191 /* BikeUserTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		796177C426A2F91E00C4A91A /* DecodingError+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecodingError+.swift"; sourceTree = "<group>"; };
 		796177C726A2FD6D00C4A91A /* XCTestCase+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+.swift"; sourceTree = "<group>"; };
 		79BACCFF26BDC9CD0021134B /* BikeUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeUser.swift; sourceTree = "<group>"; };
+		79D1936926C2824E00B94191 /* BikeUserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeUserTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			children = (
 				796177AB26A2DB1D00C4A91A /* CityTests.swift */,
 				796177C126A2EFDC00C4A91A /* StationTests.swift */,
+				79D1936926C2824E00B94191 /* BikeUserTests.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79D1936A26C2824E00B94191 /* BikeUserTests.swift in Sources */,
 				796177AC26A2DB1D00C4A91A /* CityTests.swift in Sources */,
 				796177C226A2EFDC00C4A91A /* StationTests.swift in Sources */,
 				796177C826A2FD6D00C4A91A /* XCTestCase+.swift in Sources */,
