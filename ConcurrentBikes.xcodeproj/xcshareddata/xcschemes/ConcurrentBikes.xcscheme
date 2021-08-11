@@ -42,6 +42,9 @@
                   Identifier = "ServiceTests/testGetDecodingErrorThrown()">
                </Test>
                <Test
+                  Identifier = "ServiceTests/testGetFromURL()">
+               </Test>
+               <Test
                   Identifier = "ServiceTests/testGetSuccess()">
                </Test>
             </SkippedTests>

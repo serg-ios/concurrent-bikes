@@ -15,7 +15,7 @@ class StationTests: XCTestCase {
     
     func testDecodable() async {
         do {
-            let city = try await Service<City>.json(fileName: "Milano", bundle: bundle).get()
+            let city = try await Service<City>.get(from: "Milano", bundle: bundle).get()
             let station = city?.network.stations.first
             let emptySlots = await station?.emptySlots
             let freeBikes = await station?.freeBikes

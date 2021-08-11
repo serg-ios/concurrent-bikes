@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Errors that can be thrown during data collection using `Service` protocol witness.
 enum ServiceError: Error {
     case missingFile(_ fileName: String)
 }

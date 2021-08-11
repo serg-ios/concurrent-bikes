@@ -15,14 +15,14 @@ class ServiceTests: XCTestCase {
     
     // MARK: - URLSession
     
-    func testGetSuccess() async {
+    func testGetFromURL() async {
         guard let url = URL(string: "https://api.citybik.es/v2/networks/bikemi") else {
             XCTFail("Invalid URL.")
             return
         }
         do {
             let city = try await Service<City>.get(from: url).get()
-            XCTAssertEqual("bikemi", city?.network.id)
+            XCTAssertEqual("bikemi", city?.id)
         } catch {
             handleError(error)
         }
@@ -45,7 +45,7 @@ class ServiceTests: XCTestCase {
     
     func testMissingFileErrorThrown() async {
         do {
-            async let _ = try await Service<City>.json(fileName: "Madrid", bundle: bundle).get()
+            async let _ = try await Service<City>.get(from: "Madrid", bundle: bundle).get()
         } catch {
             let expectedError = ServiceError.missingFile("Madrid.json")
             XCTAssertEqual(error as? ServiceError, expectedError)
@@ -55,7 +55,7 @@ class ServiceTests: XCTestCase {
     func testDecodingErrorThrown() async {
         let fileName = "InvalidJson"
         do {
-            async let _ = try await Service<City>.json(fileName: fileName, bundle: bundle).get()
+            async let _ = try await Service<City>.get(from: fileName, bundle: bundle).get()
         } catch {
             XCTAssertNotNil(error as? DecodingError)
         }

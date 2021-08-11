@@ -15,7 +15,7 @@ class BikeUserTests: XCTestCase {
     
     func testSimulationWaiting() async {
         do {
-            let city = try await Service<City>.json(fileName: "Milano", bundle: bundle).get()
+            let city = try await Service<City>.get(from: "Milano", bundle: bundle).get()
             // Get only the first 4 stations, otherwise there will be too many bikes.
             let firstFourStations = city?.network.stations[0...3] ?? []
             let numberOfBikeUsers = 50
@@ -63,7 +63,7 @@ class BikeUserTests: XCTestCase {
 
     func testSimulationNoWaiting() async {
         do {
-            let city = try await Service<City>.json(fileName: "Milano", bundle: bundle).get()
+            let city = try await Service<City>.get(from: "Milano", bundle: bundle).get()
             // Get only one station, to easily avoid waiting.
             let stations = [city?.network.stations[1]].compactMap({$0})
             let numberOfBikeUsers = 18
@@ -104,7 +104,7 @@ class BikeUserTests: XCTestCase {
     
     func testSimulationWithGoal() async {
         do {
-            let city = try await Service<City>.json(fileName: "Milano", bundle: bundle).get()
+            let city = try await Service<City>.get(from: "Milano", bundle: bundle).get()
             // Get only the first 2 stations, so there are high chances to reach the goal by at least one user.
             let stations = Array(city?.network.stations[0...1] ?? [])
             let numberOfBikeUsers = 20
