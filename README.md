@@ -1,6 +1,6 @@
 # Concurrent Bikes
 
-This project aims to test the new async/await and concurrency features introduced in Swift 5.5.
+This project tests the new async/await and concurrency features introduced in Swift 5.5.
 
 Take into consideration that these features are evolving. In fact, during the development of this project, a few problems were found and solved by downloading the latest Xcode 13 beta 4.
 
@@ -166,12 +166,12 @@ In the `get(from url: URL)` function and the protocol witness' closure `let get:
 Thanks to generics, this protocol witness can be reused to collect any `Decodable` data from different sources asynchronously.
 
 ```swift
-// Obtains whatever decodable object from an URL.
+// Obtains any decodable object from an URL.
 let whateverDecodable = try await Service<WhateverDecodable>.get(from: url).get()
 ```
 
 ```swift
-// Obtains whatever decodable object from a JSON file.
+// Obtains any decodable object from a JSON file.
 let whateverDecodable = try await Service<WhateverDecodable>.get(
     from: "JsonNameWithoutExtension",
     bundle: bundle
@@ -237,6 +237,8 @@ func testGetFromJson() async {
 ```
 
 The test method will pause while the asynchronous operation is running, and it will resume when it finishes, at which point the assertion will execute as if nothing had happened.
+
+Note that the test methods must be marked as `async`.
 
 ### Model 💾
 
@@ -536,6 +538,140 @@ By doing this inside a `for` loop, many tasks can be added to the group and exec
 The results will arrive in drips and drabs, and the task group will not conclude its execution until all the tasks have finished and all the results have been collected. If the type of the task group is `Void.self`, there will be no results to collect.
 
 As `TaskGroup` implements the `AsyncSequence` protocol, the results can be accessed with a `for await` loop. In each iteration, the execution will pause until a result is ready to collect, and after doing something with the collected value, the execution will pause again to wait for the next concurrent asynchronous task of the group to finish until all the tasks of the group complete.
+
+## Logs 📝
+
+This simulation has been tested using unit tests, and the original function receives a boolean parameter `logs`. If this parameter is activated, all the bike users' movements are printed out.
+
+The simulation below shows how 20 users travel between 2 stations: 6fc30313a606317ef0a8848675b83bfd and b5262607c8a44db673b2f9acd3ddeede (the latter is the goal for all the users) with a maximum number of attempts of 10.
+
+A user has to reach the goal station by bike and find an empty slot to accomplish its goal. This simulation has only two stations to make it easy for users to leave a bike in the goal station in 10 attempts.
+
+- `🚶‍♂️ 0 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 18 🅿️ 2` means that the user with ID 0 arrives walking to the station with ID 6fc30313a606317ef0a8848675b83bfd and finds 18 bikes available and 2 empty slots, so it can take a bike.
+- `🚶‍♂️ 17 ⛔️ b5262607c8a44db673b2f9acd3ddeede` means that the user with ID 17 arrives to the station with ID b5262607c8a44db673b2f9acd3ddeede and finds no bikes available.
+- `🚴‍♂️ 9 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 13 🅿️ 7` means that the user with ID 9 arrives to the station with ID 6fc30313a606317ef0a8848675b83bfd and finds 13 bikes available and 7 empty slots, so it can leave its bike.
+- `🚴‍♂️ 2 🎉🥳🎊` means that the user with ID 2 has reached is goal in 10 attempts maximum.
+
+The logs prove that all the individual simulations are run concurrently, and the mutable state of the actor `Station` remains consistent.
+
+
+```
+
+Test Case '-[ConcurrentBikesTests.BikeUserTests testSimulationWithGoal]' started.
+🚶‍♂️ 0 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 18 🅿️ 2
+🚶‍♂️ 1 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 1 🅿️ 29
+🚶‍♂️ 2 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 17 🅿️ 3
+🚶‍♂️ 3 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 16 🅿️ 4
+🚶‍♂️ 4 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 15 🅿️ 5
+🚶‍♂️ 5 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 0 🅿️ 30
+🚶‍♂️ 6 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 14 🅿️ 6
+🚶‍♂️ 7 ⛔️ b5262607c8a44db673b2f9acd3ddeede
+🚶‍♂️ 8 ⛔️ b5262607c8a44db673b2f9acd3ddeede
+🚶‍♂️ 9 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 13 🅿️ 7
+🚶‍♂️ 10 ⛔️ b5262607c8a44db673b2f9acd3ddeede
+🚶‍♂️ 11 ⛔️ b5262607c8a44db673b2f9acd3ddeede
+🚶‍♂️ 12 ⛔️ b5262607c8a44db673b2f9acd3ddeede
+🚶‍♂️ 13 ⛔️ b5262607c8a44db673b2f9acd3ddeede
+🚶‍♂️ 14 ⛔️ b5262607c8a44db673b2f9acd3ddeede
+🚶‍♂️ 15 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 12 🅿️ 8
+🚶‍♂️ 16 ⛔️ b5262607c8a44db673b2f9acd3ddeede
+🚶‍♂️ 17 ⛔️ b5262607c8a44db673b2f9acd3ddeede
+🚶‍♂️ 18 ⛔️ b5262607c8a44db673b2f9acd3ddeede
+🚶‍♂️ 19 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 11 🅿️ 9
+🚴‍♂️ 0 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 1 🅿️ 29
+🚴‍♂️ 1 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 2 🅿️ 28
+🚴‍♂️ 2 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 3 🅿️ 27
+🚴‍♂️ 3 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 12 🅿️ 8
+🚴‍♂️ 4 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 4 🅿️ 26
+🚴‍♂️ 5 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 5 🅿️ 25
+🚴‍♂️ 6 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 13 🅿️ 7
+🚶‍♂️ 7 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 12 🅿️ 8
+🚶‍♂️ 8 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 4 🅿️ 26
+🚴‍♂️ 9 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 13 🅿️ 7
+🚶‍♂️ 10 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 12 🅿️ 8
+🚶‍♂️ 11 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 11 🅿️ 9
+🚶‍♂️ 12 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 3 🅿️ 27
+🚶‍♂️ 13 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 10 🅿️ 10
+🚶‍♂️ 14 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 9 🅿️ 11
+🚴‍♂️ 15 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 4 🅿️ 26
+🚶‍♂️ 16 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 3 🅿️ 27
+🚶‍♂️ 17 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 2 🅿️ 28
+🚶‍♂️ 18 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 8 🅿️ 12
+🚴‍♂️ 19 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 3 🅿️ 27
+🚴‍♂️ 0 🎉🥳🎊
+🚴‍♂️ 1 🎉🥳🎊
+🚴‍♂️ 2 🎉🥳🎊
+🚶‍♂️ 3 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 7 🅿️ 13
+🚴‍♂️ 4 🎉🥳🎊
+🚴‍♂️ 5 🎉🥳🎊
+🚶‍♂️ 6 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 2 🅿️ 28
+🚴‍♂️ 7 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 3 🅿️ 27
+🚴‍♂️ 8 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 4 🅿️ 26
+🚶‍♂️ 9 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 3 🅿️ 27
+🚴‍♂️ 10 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 4 🅿️ 26
+🚴‍♂️ 11 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 8 🅿️ 12
+🚴‍♂️ 12 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 9 🅿️ 11
+🚴‍♂️ 13 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 10 🅿️ 10
+🚴‍♂️ 14 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 5 🅿️ 25
+🚴‍♂️ 15 🎉🥳🎊
+🚴‍♂️ 16 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 11 🅿️ 9
+🚴‍♂️ 17 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 6 🅿️ 24
+🚴‍♂️ 18 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 12 🅿️ 8
+🚴‍♂️ 19 🎉🥳🎊
+🚴‍♂️ 6 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 13 🅿️ 7
+🚴‍♂️ 3 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 14 🅿️ 6
+🚴‍♂️ 8 🎉🥳🎊
+🚴‍♂️ 10 🎉🥳🎊
+🚴‍♂️ 7 🎉🥳🎊
+🚶‍♂️ 11 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 5 🅿️ 25
+🚶‍♂️ 12 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 13 🅿️ 7
+🚶‍♂️ 13 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 4 🅿️ 26
+🚴‍♂️ 14 🎉🥳🎊
+🚶‍♂️ 16 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 3 🅿️ 27
+🚴‍♂️ 17 🎉🥳🎊
+🚶‍♂️ 18 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 2 🅿️ 28
+🚴‍♂️ 9 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 14 🅿️ 6
+🚶‍♂️ 6 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 1 🅿️ 29
+🚴‍♂️ 11 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 2 🅿️ 28
+🚴‍♂️ 12 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 15 🅿️ 5
+🚴‍♂️ 13 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 16 🅿️ 4
+🚴‍♂️ 16 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 17 🅿️ 3
+🚴‍♂️ 18 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 18 🅿️ 2
+🚶‍♂️ 9 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 17 🅿️ 3
+🚶‍♂️ 3 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 16 🅿️ 4
+🚴‍♂️ 6 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 17 🅿️ 3
+🚶‍♂️ 12 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 16 🅿️ 4
+🚴‍♂️ 11 🎉🥳🎊
+🚶‍♂️ 13 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 15 🅿️ 5
+🚶‍♂️ 16 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 1 🅿️ 29
+🚶‍♂️ 18 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 14 🅿️ 6
+🚴‍♂️ 9 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 2 🅿️ 28
+🚴‍♂️ 3 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 15 🅿️ 5
+🚶‍♂️ 6 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 14 🅿️ 6
+🚴‍♂️ 12 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 3 🅿️ 27
+🚴‍♂️ 13 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 15 🅿️ 5
+🚴‍♂️ 16 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 16 🅿️ 4
+🚴‍♂️ 18 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 4 🅿️ 26
+🚴‍♂️ 9 🎉🥳🎊
+🚶‍♂️ 3 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 15 🅿️ 5
+🚴‍♂️ 6 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 5 🅿️ 25
+🚶‍♂️ 13 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 14 🅿️ 6
+🚶‍♂️ 16 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 13 🅿️ 7
+🚴‍♂️ 12 🎉🥳🎊
+🚴‍♂️ 18 🎉🥳🎊
+🚴‍♂️ 3 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 6 🅿️ 24
+🚴‍♂️ 6 🎉🥳🎊
+🚴‍♂️ 13 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 7 🅿️ 23
+🚴‍♂️ 3 🎉🥳🎊
+🚴‍♂️ 16 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 14 🅿️ 6
+🚴‍♂️ 13 🎉🥳🎊
+🚶‍♂️ 16 🚉 6fc30313a606317ef0a8848675b83bfd 🚲 13 🅿️ 7
+🚴‍♂️ 16 🚉 b5262607c8a44db673b2f9acd3ddeede 🚲 8 🅿️ 22
+🚴‍♂️ 16 🎉🥳🎊
+Test Case '-[ConcurrentBikesTests.BikeUserTests testSimulationWithGoal]' passed (1.192 seconds).
+```
+
+To see more simulations with a different number of stations, users and attempts, check [BikeUserTests](https://github.com/serg-ios/concurrent-bikes/blob/main/ConcurrentBikesTests/Model/BikeUserTests.swift).
 
 ## Conclusions 🎬
 

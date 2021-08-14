@@ -139,4 +139,25 @@ class BikeUserTests: XCTestCase {
             handleError(error)
         }
     }
+    
+    func testEmptySlotsDifficultToFind() async {
+        do {
+            let city = try await Service<City>.get(from: "Milano", bundle: bundle).get()
+            var stations: [Station] = []
+            for station in city?.network.stations ?? [] where await station.emptySlots == 0 {
+                stations.append(station)
+                break
+            }
+            for station in city?.network.stations ?? [] where await station.emptySlots == 1 {
+                stations.append(station)
+                break
+            }
+            XCTAssertEqual(2, stations.count)
+            let bikeUser = BikeUser(id: 0)
+            let simulationResult = await bikeUser.runSimulation(in: stations, paths: 40, logs: true)
+            XCTAssertGreaterThan(simulationResult.time, 0)
+        } catch {
+            handleError(error)
+        }
+    }
 }
