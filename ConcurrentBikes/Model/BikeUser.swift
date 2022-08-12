@@ -109,7 +109,7 @@ class BikeUser: Identifiable {
         if logs {
             print("\(hasBike ? "🚴‍♂️" : "🚶‍♂️") \(id) ⛔️ \(station.id)")
         }
-        await Task.sleep(waitingTime)
+        try? await Task.sleep(nanoseconds: waitingTime)
         totalWaitingTime += Double(waitingTime) / 1_000_000_000
     }
     
@@ -128,7 +128,7 @@ class BikeUser: Identifiable {
             let emptySlots = await station.emptySlots
             print("🚉 \(station.id) 🚲 \(freeBikes) 🅿️ \(emptySlots)")
         }
-        await Task.sleep(waitingTime)
+        try? await Task.sleep(nanoseconds: waitingTime)
     }
     
     /// Leaves a bike in a station.
@@ -146,6 +146,6 @@ class BikeUser: Identifiable {
             let emptySlots = await station.emptySlots
             print("🚉 \(station.id) 🚲 \(freeBikes) 🅿️ \(emptySlots)")
         }
-        await Task.sleep(waitingTime)
+        try? await Task.sleep(nanoseconds: waitingTime)
     }
 }
